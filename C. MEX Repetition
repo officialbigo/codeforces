@@ -1,0 +1,30 @@
+from collections import defaultdict
+
+
+def right_circular_shift(lst, k):
+    if not lst:
+        return lst
+    k = k % len(lst)
+    return lst[-k:] + lst[:-k]
+
+
+T = int(input())
+for t in range(T):
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    map1 = defaultdict(int)
+    for i in arr:
+        map1[i] += 1
+    seperate = 0
+    max_el = max(arr)
+    for i in range(max_el+1):
+        if map1[i] == 0:
+            seperate = i
+            break
+    else:
+        seperate = max_el+1
+    new_arr = [seperate]+arr
+    position = ((k) % (n+1))
+    shifted_list = right_circular_shift(new_arr, position)[1:]
+    output = ' '.join(str(element) for element in shifted_list)
+    print(output)
