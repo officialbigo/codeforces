@@ -1,0 +1,23 @@
+T = int(input())
+for t in range(T):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    ans = [i for i in range(n, 0, -1)]
+    if n == 1:
+        print(1)
+    else:
+        arr1 = []
+        count = 1
+        for i in arr:
+            arr1.append([i, count])
+            count += 1
+        arr1.sort(key=lambda row: row[0])
+        arr2 = []
+        count = n
+        for i in arr1:
+            arr2.append([i[0], i[1], count])
+            count -= 1
+        arr2.sort(key=lambda row: row[1])
+        for i in arr2:
+            print(i[2], end=" ")
+        print()
