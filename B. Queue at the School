@@ -1,0 +1,15 @@
+n, time = map(int, input().split())
+queue = input()
+queue_array = []
+for i in queue:
+    queue_array.append(i)
+while time != 0:
+    i = 0
+    while i < n-1:
+        if queue_array[i] == "B" and queue_array[i+1] == "G":
+            queue_array[i] = "G"
+            queue_array[i+1] = "B"
+            i += 1
+        i += 1
+    time -= 1
+print("".join(queue_array))
