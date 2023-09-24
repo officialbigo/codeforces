@@ -1,0 +1,19 @@
+n, m, k = map(int, input().split())
+arr = []
+for i in range(m):
+    arr.append(int(input()))
+player = int(input())
+count = 0
+for i in arr:
+    temp = player ^ i
+    # Explain
+    bin_val = bin(temp)[2:][::-1]
+    temp_count = 0
+    for i in bin_val:
+        if i == "1":
+            temp_count += 1
+            if temp_count > k:
+                break
+    if temp_count <= k:
+        count += 1
+print(count)
