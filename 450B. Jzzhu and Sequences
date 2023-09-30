@@ -1,0 +1,4 @@
+x, y = map(int, input().split())
+n = int(input())
+arr = [x, y, -x+y, -x, -y, -y+x]
+print(arr[(n % 6)-1] % (10**9+7))
