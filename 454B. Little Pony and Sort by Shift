@@ -1,0 +1,29 @@
+from collections import deque
+
+
+def check_left(s):
+    x = s.popleft()
+    s.appendleft(x)
+    return x
+
+
+def check_right(s):
+    x = s.pop()
+    s.append(x)
+    return x
+
+
+n = int(input())
+ans = 0
+queue = deque(map(int, input().split()))
+while check_left(queue) >= check_right(queue) and ans < n:
+    queue.appendleft(queue.pop())
+    ans += 1
+if ans == n:
+    print(0)
+    exit()
+for i in range(1, len(queue)):
+    if queue[i] < queue[i-1]:
+        print(-1)
+        exit()
+print(ans)
