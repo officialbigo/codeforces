@@ -1,0 +1,19 @@
+n = int(input())
+tree_heights = []
+for i in range(n):
+    tree_heights.append(int(input()))
+altitude = 0
+time = 0
+for i in range(n-1):
+    time += tree_heights[i]-altitude
+    time += 1
+    if tree_heights[i+1] >= tree_heights[i]:
+        altitude = tree_heights[i]
+        time += 1
+    else:
+        time += tree_heights[i]-tree_heights[i+1]
+        altitude = tree_heights[i+1]
+        time += 1
+time += tree_heights[-1]-altitude
+time += 1
+print(time)
