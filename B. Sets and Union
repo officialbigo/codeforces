@@ -1,0 +1,22 @@
+from collections import defaultdict
+T = int(input())
+for t in range(T):
+    n = int(input())
+    sets = []
+    for i in range(n):
+        sets.append(list(map(int, input().split()))[1:])
+    values_frequency_map = defaultdict(int)
+    total_element_count = 0
+    for i in sets:
+        for j in i:
+            values_frequency_map[j] += 1
+            total_element_count += 1
+    ans = 0
+    for value in values_frequency_map:
+        set1 = set()
+        for set_val in range(len(sets)):
+            if value not in sets[set_val]:
+                for i in sets[set_val]:
+                    set1.add(i)
+        ans = max(ans, len(set1))
+    print(ans)
