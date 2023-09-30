@@ -1,0 +1,15 @@
+from collections import defaultdict
+n, m = map(int, input().split())
+language = defaultdict(int)
+for i in range(m):
+    word1, word2 = map(str, input().split())
+    if len(word1) <= len(word2):
+        language[word1] = word1
+    else:
+        language[word1] = word2
+lecture = list(map(str, input().split()))
+notes = ""
+for i in lecture:
+    notes += language[i]
+    notes += " "
+print(notes)
