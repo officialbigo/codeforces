@@ -1,0 +1,34 @@
+from collections import defaultdict
+s = input()
+t = input()
+maps = defaultdict(int)
+mapt = defaultdict(int)
+for i in s:
+    maps[i] += 1
+for i in t:
+    mapt[i] += 1
+for i in mapt:
+    if maps[i] < mapt[i]:
+        print("need tree")
+        exit()
+automation = 0
+for i in maps:
+    if maps[i] > mapt[i]:
+        automation += 1
+
+if automation == 0:
+    print("array")
+else:
+    count = 0
+    index = 0
+    flag = 0
+    for i in s:
+        if index == len(t):
+            break
+        if i == t[index]:
+            count += 1
+            index += 1
+    if count == len(t):
+        print("automaton")
+    else:
+        print("both")
