@@ -1,0 +1,30 @@
+import copy
+m, n = map(int, input().split())
+b = []
+for i in range(m):
+    temp = list(map(int, input().split()))
+    b.append(temp)
+a = [[1 for _ in range(n)] for _ in range(m)]
+for i in range(m):
+    for j in range(n):
+        if b[i][j] == 0:
+            for col in range(n):
+                a[i][col] = 0
+            for row in range(m):
+                a[row][j] = 0
+x = copy.deepcopy(a)
+for i in range(m):
+    for j in range(n):
+        if x[i][j] == 1:
+            for col in range(n):
+                a[i][col] = 1
+            for row in range(m):
+                a[row][j] = 1
+if a == b:
+    print("YES")
+    for i in range(m):
+        for j in range(n):
+            print(x[i][j], end=" ")
+        print()
+else:
+    print("NO")
