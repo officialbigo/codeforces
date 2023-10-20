@@ -1,0 +1,15 @@
+a = []
+temp = list(map(int, input().split()))
+a.append(temp)
+temp = list(map(int, input().split()))
+a.append(temp)
+temp = list(map(int, input().split()))
+a.append(temp)
+a[0][0] = int((-a[1][0]-a[2][0]+a[0][1]+a[2][1]+a[1][2]+a[0][2])/2)
+sum = a[0][0]+a[1][0]+a[2][0]
+a[1][1] = sum-a[0][1]-a[2][1]
+a[2][2] = sum-a[1][2]-a[0][2]
+for i in a:
+    for j in i:
+        print(j, end=" ")
+    print()
